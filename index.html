@@ -11,8 +11,9 @@
 <meta name="application-name" content="Civics Test Prep">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Civics Test Prep">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='none' stroke='%239C7A32' stroke-width='3'/%3E%3Cpath d='M32 12l4 13h14L39 33l4 13-11-8-11 8 4-13-11-8h14z' fill='%231F3355'/%3E%3C/svg%3E">
-<title>Civics Test Practice — U.S. Naturalization Interview</title>
+<title>Civics Test Prep — U.S. Citizenship Test Practice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -116,7 +117,7 @@
   .btn.bad{background:var(--brick);border-color:var(--brick);}
   .btn:disabled{opacity:0.45;cursor:default;}
   button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid rgba(156,122,50,.55);outline-offset:2px;}
-  @media (max-width:520px){.btn,.seg button,.icon-btn{min-height:44px}.wrap{padding:20px 14px 60px}.letterhead{gap:11px}.seal{width:44px;height:44px}.titles h1{font-size:22px}.seg{width:100%}.seg button{flex:1;padding:8px 7px}.tabs{overflow-x:auto;white-space:nowrap}.tabs button{margin-right:14px}.panel{padding:17px}.qtext{font-size:19px}.grade-row .btn{flex:1}.card-controls{align-items:flex-start}.card-controls .row{flex-wrap:wrap}}
+  @media (max-width:520px){.wrap{padding:20px 14px 60px}.letterhead{gap:11px}.seal{width:44px;height:44px}.titles h1{font-size:22px}.seg{width:100%}.seg button{flex:1;padding:8px 7px}.tabs{overflow-x:auto;white-space:nowrap}.tabs button{margin-right:14px}.panel{padding:17px}.qtext{font-size:19px}.grade-row .btn{flex:1}.card-controls{align-items:flex-start}.card-controls .row{flex-wrap:wrap}}
   @media (max-width:360px){.seg button{font-size:12px}.tabs button{font-size:13px;margin-right:10px}.qtext{font-size:18px}}
   select, input[type=text]{
     font-family:var(--sans);font-size:14px;padding:8px 10px;border:1px solid var(--line);
@@ -190,27 +191,49 @@
 
   .checkbox-row{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-soft);}
   .top-actions{display:flex;justify-content:flex-end;margin-bottom:10px;gap:8px;}
+  .theme-btn{min-width:42px;padding:8px 11px;font-size:16px;}
+  .brand-badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brass-deep);margin-top:2px;}
+  .home-hero{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:#F6F1E3;border-radius:8px;padding:24px;margin-bottom:16px;box-shadow:0 8px 22px rgba(31,51,85,.12)}
+  .home-hero h2{font-family:var(--serif);font-size:30px;line-height:1.15;margin:0 0 8px}
+  .home-hero p{margin:0;color:#EEF2F7;max-width:58ch}
+  .home-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+  .home-actions .btn{width:100%;text-align:left}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+  .stat-card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px}
+  .stat-card .value{font-family:var(--serif);font-size:28px;color:var(--navy);font-weight:600;line-height:1}
+  .stat-card .label{font-size:11px;color:var(--ink-soft);margin-top:6px}
+  .section-title{font-family:var(--serif);font-size:19px;color:var(--navy);margin:0 0 10px}
+  .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .feature-card{border:1px solid var(--line-soft);background:var(--paper);padding:14px;border-radius:5px}
+  .feature-card strong{display:block;color:var(--navy);margin-bottom:3px}
+  .feature-card span{font-size:12.5px;color:var(--ink-soft)}
+  .progress-mini{height:7px;background:var(--line-soft);border-radius:10px;overflow:hidden;margin-top:8px}
+  .progress-mini span{display:block;height:100%;background:var(--brass)}
+  .history-table{width:100%;border-collapse:collapse;font-size:12.5px}
+  .history-table th,.history-table td{text-align:left;padding:8px;border-bottom:1px solid var(--line-soft)}
+  .history-table th{color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+  .info-list{margin:8px 0 0;padding-left:18px;color:var(--ink-soft);font-size:13px}
+  .notice{background:var(--paper-deep);border:1px solid var(--line);border-radius:5px;padding:12px 14px;font-size:12.5px;color:var(--ink-soft)}
+  .link-btn{background:none;border:0;padding:0;color:var(--navy);font:inherit;font-weight:700;cursor:pointer;text-decoration:underline}
+  .footer-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+
+  body[data-theme="dark"]{
+    --paper:#12171D;--paper-deep:#1B232C;--card:#182028;--ink:#F2F0EA;--ink-soft:#B8B8B0;--navy:#D7E4F7;--navy-soft:#AFC4E2;--brass:#D3B56B;--brass-deep:#E0C77F;--brick:#E38C82;--brick-bg:#382321;--forest:#86B79B;--forest-bg:#20352A;--line:#39414A;--line-soft:#2D353E;
+    background-image:radial-gradient(circle at 15% 8%,rgba(211,181,107,.06),transparent 45%),radial-gradient(circle at 90% 85%,rgba(150,180,220,.05),transparent 40%);
+  }
+  body[data-theme="dark"] .home-hero{background:linear-gradient(135deg,#1D3557,#27466F);}
+  body[data-theme="dark"] .home-hero p{color:#E7EDF6}
+  body[data-theme="dark"] .btn{color:#111820}
+  body[data-theme="dark"] .btn.secondary{color:var(--navy);}
+  body[data-theme="dark"] .seg button.active{color:#111820}
+  body[data-theme="dark"] .feature-card{background:var(--paper-deep)}
+  body[data-theme="dark"] a{color:var(--navy)}
+  @media (max-width:560px){.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-actions{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr}.home-hero h2{font-size:25px}}
 
 .certificate-actions{margin-top:16px;padding-top:16px;border-top:1px solid #ddd}.cert-name{max-width:360px}.cert-note{margin-top:8px}.cert-btn{margin-top:8px}
 
-  /* ---------- 2026 app upgrades ---------- */
-  body.dark{
-    --paper:#111827;--paper-deep:#1b2535;--card:#182235;--ink:#F3F4F6;--ink-soft:#B8C0CC;
-    --navy:#D9E5FF;--navy-soft:#B9C9EA;--brass:#D8B35A;--brass-deep:#E5C978;--brick:#E08A83;
-    --brick-bg:#3a2425;--forest:#7FC39B;--forest-bg:#20382b;--line:#35425A;--line-soft:#2B364A;
-    background-image:radial-gradient(circle at 15% 8%, rgba(216,179,90,.07), transparent 45%),radial-gradient(circle at 90% 85%, rgba(120,160,220,.06), transparent 40%);
-  }
-  .app-toolbar{display:flex;justify-content:flex-end;gap:8px;margin:-2px 0 10px;}
-  .icon-btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 11px;cursor:pointer;font-weight:600;font-size:12px;}
-  .hero-card{background:linear-gradient(135deg,var(--navy),var(--navy-soft));color:#fff;border-radius:12px;padding:24px;margin-bottom:16px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-  .hero-card h2{margin:0 0 6px;font-family:var(--serif);font-size:28px}.hero-card p{margin:0 0 16px;opacity:.9;font-size:14px}.hero-actions{display:flex;gap:8px;flex-wrap:wrap}.hero-actions .btn{background:#fff;color:#1F3355;border-color:#fff}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.stat-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px}.stat-card strong{display:block;font-family:var(--serif);font-size:25px;color:var(--navy)}.stat-card span{font-size:11px;color:var(--ink-soft)}
-  .info-banner{border:1px solid var(--line);background:var(--paper-deep);border-radius:8px;padding:11px 13px;font-size:12.5px;margin:10px 0 16px}.source-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.source-card{border:1px solid var(--line);border-radius:8px;padding:13px;background:var(--card)}.source-card strong{display:block;margin-bottom:4px;color:var(--navy)}
-  .progress-summary{margin-top:16px}.mini-bar{height:8px;background:var(--line-soft);border-radius:8px;overflow:hidden}.mini-bar>span{display:block;height:100%;background:var(--brass)}
-  .share-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.certificate-actions{border-radius:10px;background:var(--paper-deep);padding:16px;border-top:0}.cert-name{width:100%;max-width:420px;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
-  @media (max-width:600px){.stats-grid{grid-template-columns:1fr 1fr}.source-grid{grid-template-columns:1fr}.hero-card h2{font-size:24px}.app-toolbar{margin-top:4px}.tabs{overflow-x:auto;white-space:nowrap;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs button{flex:0 0 auto;margin-right:12px}.version-row{align-items:stretch}.seg{width:100%}.seg button{flex:1}.hero-actions .btn{width:100%}}
-  @media (max-width:360px){.stats-grid{grid-template-columns:1fr 1fr}.wrap{padding-left:10px;padding-right:10px}.titles h1{font-size:22px}.titles p{font-size:12px}.panel{padding:16px}}
-
+/* MONETIZATION */
+.monetize-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.money-card{border:1px solid var(--line,#ddd);border-radius:12px;padding:18px;background:var(--card,#fff)}.money-card h3{margin:0 0 7px}.money-card p{margin:7px 0;color:var(--muted,#667085)}.money-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.ad-slot{min-height:90px;border:1px dashed #c8ccd4;border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;margin:14px 0;color:#7a7f89;font-size:12px;background:rgba(127,127,127,.04)}.ad-slot:empty{display:none}.disclosure{font-size:12px;color:var(--muted,#667085);margin-top:10px}.support-list{display:grid;gap:8px;margin-top:10px}.support-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line,#ddd);border-radius:9px}.money-badge{display:inline-block;font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;background:#f1ead7;color:#6b531d;margin-bottom:8px}@media(max-width:700px){.monetize-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -480,16 +503,60 @@ function buildDeck(rows, cats){
   });
 }
 
-const APP_CONFIG = {
-  name: 'Civics Test Prep',
-  version: '2.0.0',
-  currentYear: 2026,
-  contentVersion: 'USCIS 2025 Civics Test',
-  lastVerified: 'September 2026',
-  officialStudyUrl: 'https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test',
-  testUpdatesUrl: 'https://www.uscis.gov/citizenship/testupdates',
-  disclaimer: 'Independent study tool. Not affiliated with or endorsed by USCIS.'
+
+/* ============================================================
+   MONETIZATION CONFIG
+   Replace the placeholder values below with your own accounts.
+   A static GitHub Pages site can show ads/links and send users to
+   a payment checkout, but it must NOT store card details or pretend
+   to verify paid access in the browser.
+   ============================================================ */
+const MONETIZATION = {
+  adsenseClient: '', // e.g. ca-pub-XXXXXXXXXXXXXXXX
+  adSlots: { home: '', afterTest: '' },
+  premiumUrl: '', // your Razorpay/Stripe checkout URL
+  donateUrl: '', // your payment/donation page URL
+  upiId: '', // e.g. yourname@upi — optional
+  affiliateLinks: {
+    studyGuide: '',
+    notebook: '',
+    flashcards: ''
+  }
 };
+
+function monetizationLink(url,label){
+  return url ? `<a class="btn secondary" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label}</a>` : `<button class="btn secondary" type="button" onclick="toast('Add your payment link in MONETIZATION near the top of index.html.')">${label}</button>`;
+}
+function upiLink(){
+  if(!MONETIZATION.upiId) return `<button class="btn secondary" type="button" onclick="toast('Add your UPI ID in MONETIZATION near the top of index.html.')">Pay by UPI</button>`;
+  const href=`upi://pay?pa=${encodeURIComponent(MONETIZATION.upiId)}&pn=${encodeURIComponent('Civics Test Prep')}&cu=INR`;
+  return `<a class="btn secondary" href="${href}">Pay by UPI</a>`;
+}
+function adSlot(kind){
+  const slot=MONETIZATION.adSlots[kind];
+  if(!MONETIZATION.adsenseClient || !slot) return `<div class="ad-slot">Advertisement space · Connect Google AdSense to display ads here.</div>`;
+  return `<div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="${esc(MONETIZATION.adsenseClient)}" data-ad-slot="${esc(slot)}" data-ad-format="auto" data-full-width-responsive="true"></ins></div>`;
+}
+function affiliateButton(url,label){
+  return url ? `<a class="btn secondary" href="${esc(url)}" target="_blank" rel="sponsored noopener noreferrer">${label}</a>` : `<button class="btn secondary" type="button" onclick="toast('Add your affiliate URL in MONETIZATION near the top of index.html.')">${label}</button>`;
+}
+function monetizationView(){
+  return `<div class="panel"><div class="money-badge">💰 Support the app</div><h2 class="section-title">Keep Civics Test Prep free</h2><p class="muted">The core study tools remain free. If this app helps you, you can support development or explore optional premium resources.</p>
+  <div class="monetize-grid">
+    <div class="money-card"><h3>⭐ Premium</h3><p>Offer an optional paid upgrade such as an ad-free experience, extra study packs, or advanced features.</p><div class="money-actions">${monetizationLink(MONETIZATION.premiumUrl,'View Premium')}</div></div>
+    <div class="money-card"><h3>❤️ Donate</h3><p>Accept voluntary support. Choose a payment page or UPI account that you control.</p><div class="money-actions">${monetizationLink(MONETIZATION.donateUrl,'Donate')} ${upiLink()}</div></div>
+    <div class="money-card"><h3>📚 Recommended study resources</h3><p>Use affiliate links for relevant books or study supplies. Only recommend products you genuinely want to feature.</p><div class="money-actions">${affiliateButton(MONETIZATION.affiliateLinks.studyGuide,'Study Guide')} ${affiliateButton(MONETIZATION.affiliateLinks.notebook,'Notebook')} ${affiliateButton(MONETIZATION.affiliateLinks.flashcards,'Flashcards')}</div><div class="disclosure">Affiliate disclosure: if a linked product is purchased through an affiliate link, you may receive a commission at no extra cost to the buyer.</div></div>
+    <div class="money-card"><h3>📢 Advertising</h3><p>Google AdSense can place ads after your site is approved. Replace the AdSense client and ad-slot placeholders in the configuration.</p><div class="disclosure">Never click your own ads or encourage users to click ads. Follow the ad network's policies.</div></div>
+  </div>${adSlot('home')}
+  <div class="notice" style="margin-top:14px;"><strong>Important:</strong> GitHub Pages hosts your HTML but does not collect or pay you. Money goes to the bank/payment account connected to your advertising, checkout, donation, or affiliate provider.</div>
+  </div>`;
+}
+function initMonetization(){
+  if(!MONETIZATION.adsenseClient) return;
+  if(document.querySelector('script[data-adsense]')) return;
+  const sc=document.createElement('script'); sc.async=true; sc.crossOrigin='anonymous'; sc.dataset.adsense='1'; sc.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client='+encodeURIComponent(MONETIZATION.adsenseClient); document.head.appendChild(sc);
+  setTimeout(()=>{document.querySelectorAll('.adsbygoogle').forEach(()=>{try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}})},500);
+}
 
 const DECKS = {
   '2008': { rows: buildDeck(ROWS_08, CATS_08), cats: CATS_08, label:'2008 Test · 100 questions', asked:10, need:6,
@@ -509,7 +576,7 @@ const CURRENT = {
   chiefJustice: `John G. Roberts, Jr.`,
   scotusSeats: `Nine (9)`,
 };
-const LAST_VERIFIED = APP_CONFIG.lastVerified;
+const LAST_VERIFIED = `September 2026`;
 
 /* ============================================================
    STORAGE HELPERS
@@ -527,9 +594,8 @@ async function saveJSON(key, obj){
    APP STATE
    ============================================================ */
 const state = {
-  version: '2025',
-  mode: 'home',
-  theme: 'light',
+  version: '2008',
+  mode: 'flashcards',
   stateInfo: { stateName:'', senator:'', rep:'', governor:'', capital:'' },
   progress: { '2008': {missed:[], history:[]}, '2025': {missed:[], history:[]} },
   fc: { order:[], idx:0, shuffle:true, catFilter:'all', starOnly:false, revealed:false },
@@ -565,12 +631,14 @@ function shuffleArr(a){
    ============================================================ */
 async function init(){
   state.stateInfo = await loadJSON('state-info', state.stateInfo);
-  state.theme = await loadJSON('theme', 'light');
-  document.body.classList.toggle('dark', state.theme==='dark');
   state.progress['2008'] = await loadJSON('progress-2008', {missed:[], history:[]});
   state.progress['2025'] = await loadJSON('progress-2025', {missed:[], history:[]});
+  const savedTheme=localStorage.getItem('ctcp:theme');
+  applyTheme(savedTheme==='dark'?'dark':'light');
+  state.mode='home';
   resetFlashcards();
   render();
+  initMonetization();
 }
 
 function resetFlashcards(){
@@ -589,7 +657,7 @@ function start65Twenty(){
   const deck = DECKS['2025'];
   const starred = deck.rows.filter(r=>r.star);
   const ids = shuffleArr(starred.map(r=>r.n)).slice(0, 10);
-  state.sixtyFiveTwenty = { order: ids, idx:0, answers:[], finished:false, revealed:false };
+  state.sixtyFiveTwenty = { order: ids, idx:0, answers:[], finished:false };
 }
 
 function makeCertificateId(){
@@ -602,16 +670,15 @@ function openCertificate(name, score, total, testName){
   if(!cleanName){ toast('Enter your name first.'); return; }
   const date=new Date().toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
   const id=makeCertificateId();
-  const pct=total ? Math.round((score/total)*100) : 0;
   const w=window.open('','_blank');
   if(!w){ toast('Please allow pop-ups to generate the certificate.'); return; }
   const safeName=esc(cleanName).replace(/`/g,'&#96;');
   const safeTest=esc(testName).replace(/`/g,'&#96;');
-  const shareText=`${cleanName} completed ${testName} with a score of ${score}/${total} (${pct}%). Certificate ID: ${id}`;
-  w.document.write(`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Civics Test Practice Certificate</title><style>
-  @page{size:A4 landscape;margin:0}*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;background:#eef1f5;color:#1f3355}.page{width:297mm;height:210mm;padding:12mm;display:flex;align-items:center;justify-content:center}.cert{width:100%;height:100%;border:8px double #9c7a32;background:#fff;padding:14mm;position:relative;text-align:center;overflow:hidden}.seal{font-family:Arial,sans-serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#9c7a32}.title{font-size:39px;margin:12px 0 5px}.subtitle{font-family:Arial,sans-serif;font-size:17px;color:#555}.name{font-size:35px;font-weight:bold;margin:25px 0 7px;border-bottom:1px solid #aaa;padding-bottom:7px;display:inline-block;min-width:55%}.test{font-size:21px;margin:10px}.score{font-family:Arial,sans-serif;font-size:23px;font-weight:bold;margin:15px}.percent{font-family:Arial,sans-serif;font-size:14px;color:#52657f}.date{font-family:Arial,sans-serif;font-size:13px;color:#666;margin-top:22px}.id{font-family:monospace;font-size:11px;color:#777;margin-top:7px}.note{font-family:Arial,sans-serif;font-size:10px;color:#666;position:absolute;bottom:9mm;left:16mm;right:16mm}.actions{position:fixed;top:12px;right:12px;display:flex;gap:8px}button{padding:9px 13px;font-weight:bold;border:1px solid #1f3355;border-radius:6px;background:#1f3355;color:white;cursor:pointer}@media print{.actions{display:none}}
-</style></head><body><div class="actions"><button onclick="window.print()">Print / Save PDF</button><button onclick="shareCert()">Share</button></div><div class="page"><div class="cert"><div class="seal">${APP_CONFIG.name} · ${APP_CONFIG.currentYear}</div><div class="title">Certificate of Practice Completion</div><div class="subtitle">Successful completion of a citizenship civics practice round</div><div class="name">${safeName}</div><div class="test">${safeTest}</div><div class="score">Score: ${score} / ${total}</div><div class="percent">${pct}% · Practice result</div><div class="date">Completed ${date}</div><div class="id">Certificate ID: ${id}</div><div class="note">Practice certificate only. This document is not issued by, affiliated with, or endorsed by U.S. Citizenship and Immigration Services (USCIS), and it is not proof of U.S. citizenship or an official test result.</div></div></div><script>async function shareCert(){const text=${JSON.stringify(shareText)};if(navigator.share){try{await navigator.share({title:'Civics Test Practice Certificate',text});}catch(e){}}else{try{await navigator.clipboard.writeText(text);alert('Certificate details copied to clipboard.');}catch(e){alert(text);}}}<'+'/'+'script></body></html>`);
-  w.document.close(); w.focus();
+  w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Citizenship Practice Certificate</title><style>
+  @page{size:A4 landscape;margin:0}*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;background:#f3f1ea;color:#1f3355}.page{width:297mm;min-height:210mm;padding:16mm;display:flex;align-items:center;justify-content:center}.cert{width:100%;min-height:100%;border:10px double #9c7a32;background:#fff;padding:16mm;position:relative;text-align:center}.seal{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#9c7a32}.title{font-size:38px;margin:14px 0 6px}.subtitle{font-family:Arial,sans-serif;font-size:18px;color:#555}.name{font-size:34px;font-weight:bold;margin:28px 0 8px;border-bottom:1px solid #aaa;padding-bottom:8px;display:inline-block;min-width:55%}.test{font-size:22px;margin:12px}.score{font-family:Arial,sans-serif;font-size:24px;font-weight:bold;margin:18px}.date{font-family:Arial,sans-serif;font-size:14px;color:#666;margin-top:26px}.id{font-family:monospace;font-size:12px;color:#777;margin-top:8px}.note{font-family:Arial,sans-serif;font-size:11px;color:#666;position:absolute;bottom:12mm;left:18mm;right:18mm}.actions{position:fixed;top:12px;right:12px;display:flex;gap:8px}button{padding:10px 16px;font-weight:bold;border:1px solid #1f3355;background:#1f3355;color:#fff;border-radius:5px}@media print{.actions{display:none}}@media(max-width:700px){.page{width:100%;padding:10px}.cert{padding:28px 18px;border-width:6px}.title{font-size:27px}.name{font-size:25px;min-width:80%}.test{font-size:17px}.score{font-size:20px}}
+</style></head><body><div class="actions"><button onclick="window.print()">Print / Save PDF</button><button onclick="navigator.share ? navigator.share({title:'Citizenship Practice Certificate',text:'${safeTest} — Score: ${score} / ${total} — Certificate ID: ${id}'}).catch(()=>{}) : (navigator.clipboard ? navigator.clipboard.writeText('Citizenship Practice Certificate — ${safeTest} — Score: ${score} / ${total} — Certificate ID: ${id}').then(()=>alert('Certificate details copied to clipboard.')) : alert('Certificate details: ${safeTest} — ${score} / ${total} — ${id}'))">Share Certificate</button></div><div class="page"><div class="cert"><div class="seal">Civics Test Practice</div><div class="title">Certificate of Practice Completion</div><div class="subtitle">This certificate recognizes successful completion of a practice test.</div><div class="name">${safeName}</div><div class="test">${safeTest}</div><div class="score">Score: ${score} / ${total}</div><div class="date">Completed ${date}</div><div class="id">Certificate ID: ${id}</div><div class="note">Practice certificate only. This document is not issued by, affiliated with, or endorsed by U.S. Citizenship and Immigration Services (USCIS), and it is not proof of U.S. citizenship or an official test result.</div></div></div></body></html>`);
+  w.document.close();
+  w.focus();
 }
 
 function grade65Twenty(correct){
@@ -620,7 +687,6 @@ function grade65Twenty(correct){
   if(st.finished) return;
   const n = st.order[st.idx];
   st.answers.push({n, correct});
-  st.revealed=false;
   const c = st.answers.filter(a=>a.correct).length;
   const answered = st.answers.length;
   const remaining = st.order.length - answered;
@@ -629,8 +695,8 @@ function grade65Twenty(correct){
     const prog = state.progress['2025'];
     st.answers.filter(a=>!a.correct).forEach(a=>{ if(!prog.missed.includes(a.n)) prog.missed.push(a.n); });
     st.answers.filter(a=>a.correct).forEach(a=>{ prog.missed = prog.missed.filter(x=>x!==a.n); });
-    prog.history.unshift({date:new Date().toISOString().slice(0,10), correct:c, total:answered, test:'2025 65/20'});
-    prog.history = prog.history.slice(0,20);
+    prog.history.unshift({date:new Date().toISOString().slice(0,10), correct:c, total:answered, percent:answered?Math.round(c/answered*100):0, passed:c>=6, type:'65/20 practice'});
+    prog.history=prog.history.slice(0,20);
     saveJSON('progress-2025', prog);
   } else {
     st.idx++;
@@ -647,11 +713,10 @@ function sixtyFiveTwentyView(){
   if(st.finished){
     const passed = correct >= 6;
     const missedItems = st.answers.filter(a=>!a.correct).map(a=>deck.rows.find(r=>r.n===a.n));
-    return `<div class="panel"><div class="score-hero"><div class="score-num">${correct} / ${answered}</div><div class="score-verdict ${passed?'pass':'fail'}">${passed?'Passed 65/20 practice':'Did not reach 6 correct'}</div><p class="muted small" style="margin-top:6px;">USCIS 2025 version · 65/20 special consideration · current for ${APP_CONFIG.currentYear}. Practice uses 10 questions from the 20 starred study questions and requires 6 correct. The round stops when the result is decided.</p></div>${missedItems.length?`<div class="missed-list"><h4>Worth reviewing</h4>${missedItems.map(it=>`<div class="qa-item"><div class="qq"><span class="n">No. ${it.n}</span>${it.q}</div><div class="aa">${getAnswer(it) || 'Set this in My state info to see your answer.'}</div></div>`).join('')}</div>`:''}${passed?`<div class="certificate-actions"><label for="certName65"><strong>Get your practice certificate</strong></label><input class="cert-name" id="certName65" type="text" placeholder="Enter your full name" maxlength="80"/><div class="share-row"><button class="btn cert-btn" id="cert65">🏆 Generate Certificate</button><button class="btn secondary" id="shareResult65">📤 Share result</button></div><p class="muted small cert-note">Print or save the certificate as PDF. It is a practice certificate, not an official USCIS document.</p></div>`:''}<div class="card-controls"><span></span><button class="btn" id="sixtyRestart">Start another 65/20 test</button></div></div>`;
+    return `<div class="panel"><div class="score-hero"><div class="score-num">${correct} / ${answered}</div><div class="score-verdict ${passed?'pass':'fail'}">${passed?'Passed 65/20 practice':'Did not reach 6 correct'}</div><p class="muted small" style="margin-top:6px;">2025 65/20 practice · current for 2026: 10 questions from the starred study list; 6 correct is a pass. The round stops early when the result is mathematically decided.</p></div>${missedItems.length?`<div class="missed-list"><h4>Worth reviewing</h4>${missedItems.map(it=>`<div class="qa-item"><div class="qq"><span class="n">No. ${it.n}</span>${it.q}</div><div class="aa">${getAnswer(it) || 'Set this in My state info to see your answer.'}</div></div>`).join('')}</div>`:''}${passed?`<div class="certificate-actions"><label for="certName65"><strong>Get your practice certificate</strong></label><input class="cert-name" id="certName65" type="text" placeholder="Enter your full name" maxlength=80/><button class="btn cert-btn" id="cert65">🏆 Generate Certificate</button><p class="muted small cert-note">You can print it or choose “Save as PDF”. This is a practice certificate, not an official USCIS document.</p></div>`:''}<div class="card-controls"><span></span><button class="btn" id="sixtyRestart">Start another 65/20 test</button></div></div>`;
   }
   const item=deck.rows.find(r=>r.n===st.order[st.idx]);
-  const pct=Math.round((answered/10)*100);
-  return `<div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div><div class="panel"><div class="row between"><span class="qnum">Question ${answered+1} of 10 · ${correct} correct</span><span class="pill">20-question study list</span></div><p class="info-banner"><strong>2025 65/20 Special Consideration:</strong> qualifying applicants study 20 starred questions; USCIS asks 10 and requires at least 6 correct. This app is a practice tool.</p><p class="qtext">${item.q}</p>${st.revealed?`<div class="answer-box"><div class="answer-label">Answer</div><div class="answer-text">${getAnswer(item)}</div></div><div class="grade-row"><button class="btn good" id="sixtyGood">✓ Correct</button><button class="btn bad" id="sixtyBad">✗ Incorrect</button></div>`:`<div class="card-controls"><button class="btn" id="sixtyReveal">Show answer</button></div>`}<p class="muted small" style="margin-top:12px;">Need 6 correct. Maximum 10 questions.</p></div>`;
+  return `<div class="panel"><div class="row between"><span class="qnum">Question ${answered+1} of 10 · ${correct} correct</span><span class="pill">65/20 list</span></div><p class="muted small">Answer aloud, then reveal the answer and mark yourself correct or incorrect.</p><p class="qtext">${item.q}</p><div class="answer-box"><div class="answer-label">Answer</div><div class="answer-text">${getAnswer(item)}</div></div><div class="grade-row"><button class="btn good" id="sixtyGood">✓ Correct</button><button class="btn bad" id="sixtyBad">✗ Incorrect</button></div><p class="muted small" style="margin-top:12px;">Need 6 correct. Maximum 10 questions.</p></div>`;
 }
 
 function startInterview(){
@@ -674,63 +739,152 @@ function toast(msg){
 }
 
 /* ============================================================
+   DASHBOARD / APP INFO / THEME
+   ============================================================ */
+function allHistory(){
+  const out=[];
+  ['2008','2025'].forEach(v=>{
+    (state.progress[v]?.history||[]).forEach(h=>out.push({...h,version:v}));
+  });
+  return out.sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+}
+function progressStats(version){
+  const p=state.progress[version]||{missed:[],history:[]};
+  const h=p.history||[];
+  const tests=h.length;
+  const passes=h.filter(x=>x.passed || (version==='2025' ? x.correct>=12 : x.correct>=6)).length;
+  const best=h.reduce((m,x)=>Math.max(m,Number(x.percent||((x.total?x.correct/x.total:0)*100))),0);
+  return {missed:(p.missed||[]).length,tests,passes,best:Math.round(best)};
+}
+function homeView(){
+  const s08=progressStats('2008'), s25=progressStats('2025');
+  const totalTests=s08.tests+s25.tests;
+  const totalMissed=s08.missed+s25.missed;
+  const best=Math.max(s08.best,s25.best);
+  const starCount=DECKS['2025'].rows.filter(r=>r.star).length;
+  return `
+    <div class="home-hero">
+      <div class="brand-badge">🇺🇸 Free study tool · updated for 2026</div>
+      <h2>Prepare for your U.S. Citizenship Test</h2>
+      <p>Study the official 2008 and 2025 civics question sets with flashcards, mock interviews, a dedicated 2025 65/20 practice test, progress tracking, and a printable practice certificate.</p>
+      <div class="home-actions">
+        <button class="btn" data-home="flashcards">📚 Start Flashcards</button>
+        <button class="btn" data-home="interview">🎤 Mock Interview</button>
+        <button class="btn" data-home="65-20">⭐ 2025 65/20 Practice</button>
+        <button class="btn" data-home="browse">🔎 Browse All Questions</button>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="value">${totalTests}</div><div class="label">Practice tests completed</div></div>
+      <div class="stat-card"><div class="value">${totalMissed}</div><div class="label">Questions to review</div></div>
+      <div class="stat-card"><div class="value">${best}%</div><div class="label">Best recorded score</div></div>
+      <div class="stat-card"><div class="value">${starCount}</div><div class="label">2025 65/20 study questions</div></div>
+    </div>
+
+    <div class="panel">
+      <h3 class="section-title">Choose the correct test version</h3>
+      <div class="feature-grid">
+        <div class="feature-card"><strong>2008 Civics Test</strong><span>100 questions · up to 10 asked · 6 correct to pass · for applicants who filed Form N-400 before October 20, 2025.</span></div>
+        <div class="feature-card"><strong>2025 Civics Test</strong><span>128 questions · up to 20 asked · 12 correct to pass · for applicants who filed Form N-400 on or after October 20, 2025.</span></div>
+        <div class="feature-card"><strong>2025 65/20 Special Consideration</strong><span>Study the 20 starred questions. The officer asks 10 and you need at least 6 correct. This remains the USCIS 2025 test version in 2026.</span></div>
+        <div class="feature-card"><strong>Practice Certificate</strong><span>Pass a practice round, enter your name, then print/save a personalized certificate. It is not an official USCIS document.</span></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:14px;">
+      <h3 class="section-title">Your progress</h3>
+      ${progressBar('2008',s08)}
+      ${progressBar('2025',s25)}
+      <div class="row" style="margin-top:12px;"><button class="btn secondary" data-home="progress">📊 View detailed progress</button><button class="btn secondary" data-home="settings">👤 My state info</button></div>
+    </div>
+
+    ${adSlot('home')}
+    <div class="panel" style="margin-top:14px;"><div class="money-badge">💰 Optional support</div><h3 class="section-title">Help keep this app free</h3><p class="muted">Support development, explore premium resources, or see recommended study materials.</p><div class="money-actions"><button class="btn secondary" data-home="monetize">💰 Support / Premium</button></div></div>
+
+    <div class="notice" style="margin-top:14px;"><strong>Important:</strong> This is an independent study tool, not USCIS. Dynamic civics answers can change. Always confirm current answers with USCIS before your interview.</div>
+  `;
+}
+function progressBar(label,s){
+  const pct=s.best||0;
+  return `<div style="margin:10px 0;"><div class="row between"><strong>${label}</strong><span class="small muted">${s.tests} tests · ${s.passes} passes · best ${pct}%</span></div><div class="progress-mini"><span style="width:${pct}%"></span></div></div>`;
+}
+function progressView(){
+  const h=allHistory();
+  const s08=progressStats('2008'), s25=progressStats('2025');
+  return `<div class="panel"><div class="row between"><div><h3 class="section-title" style="margin-bottom:2px;">Detailed Progress</h3><div class="muted small">Saved locally in this browser.</div></div><button class="btn secondary" id="clearProgress">Clear progress</button></div>
+    <div class="stat-grid"><div class="stat-card"><div class="value">${s08.tests}</div><div class="label">2008 tests</div></div><div class="stat-card"><div class="value">${s25.tests}</div><div class="label">2025 tests</div></div><div class="stat-card"><div class="value">${s08.missed+s25.missed}</div><div class="label">Missed to review</div></div><div class="stat-card"><div class="value">${Math.max(s08.best,s25.best)}%</div><div class="label">Best score</div></div></div>
+    ${h.length?`<div style="overflow:auto;"><table class="history-table"><thead><tr><th>Date</th><th>Version</th><th>Test</th><th>Score</th><th>Result</th></tr></thead><tbody>${h.slice(0,20).map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.version)}</td><td>${esc(x.type||'Mock interview')}</td><td>${x.correct} / ${x.total}</td><td>${x.passed?'Passed':'Review'}</td></tr>`).join('')}</tbody></table></div>`:`<p class="muted">No completed practice tests yet. Start a mock interview or 65/20 test.</p>`}
+    <div class="notice" style="margin-top:14px;">Progress is stored with your browser's local storage. Clearing browser site data can remove it.</div></div>`;
+}
+function aboutView(){
+  return `<div class="panel"><h3 class="section-title">About Civics Test Prep</h3><p class="muted">Civics Test Prep is an independent, free study companion for people preparing for the U.S. naturalization civics test. It provides the 2008 and 2025 question sets, flashcards, practice interviews, a dedicated 2025 65/20 practice test, state-specific answer fields, progress tracking, and practice certificates.</p>
+    <div class="notice"><strong>2026 status:</strong> The app uses the USCIS <strong>2025 version</strong> for the 128-question test. USCIS says the 65/20 special consideration uses the 20 starred questions, asks 10, and requires 6 correct. The fact that the calendar year is 2026 does not by itself make this a “2026 test.”</div>
+    <h3 class="section-title" style="margin-top:20px;">Privacy</h3><p class="muted">Your state information and practice progress are saved locally in this browser. This static site does not send those values to a server. Certificate generation opens a local browser document.</p>
+    <h3 class="section-title" style="margin-top:20px;">Easy updates</h3><p class="muted">The app keeps the test version, question data, dynamic answers, and last-verified date in clearly labeled sections near the top of this single HTML file. To update a changeable answer, edit the <strong>CURRENT</strong> object and <strong>LAST_VERIFIED</strong> value, then upload the same file as <strong>index.html</strong>.</p><h3 class="section-title" style="margin-top:20px;">Important disclaimer</h3><p class="muted">This app is not affiliated with or endorsed by USCIS. A practice certificate is not proof of citizenship and is not an official USCIS result. Always verify current or changeable answers using official USCIS resources before your interview.</p>
+    <div class="notice" style="margin-top:14px;"><strong>Cleaner public URL:</strong> rename your GitHub repository to <code>citizenship-prep</code> to get a shorter project URL. This is a GitHub setting, not an HTML change.</div><div class="footer-links"><a href="https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test" target="_blank" rel="noopener">USCIS study materials</a><a href="https://www.uscis.gov/citizenship/testupdates" target="_blank" rel="noopener">USCIS test updates</a></div>
+  </div>`;
+}
+function bindHomeEvents(){
+  document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>{state.mode=b.dataset.home; if(state.mode==='interview')startInterview(); if(state.mode==='65-20')start65Twenty(); render();});
+}
+function bindProgressEvents(){
+  const b=document.getElementById('clearProgress');
+  if(b) b.onclick=async()=>{ if(!confirm('Clear all saved practice progress and missed questions?')) return; state.progress={'2008':{missed:[],history:[]},'2025':{missed:[],history:[]}}; await saveJSON('progress-2008',state.progress['2008']); await saveJSON('progress-2025',state.progress['2025']); renderMode(); toast('Progress cleared.'); };
+}
+function applyTheme(theme){
+  const t=theme==='dark'?'dark':'light'; document.body.dataset.theme=t; localStorage.setItem('ctcp:theme',t);
+  const b=document.getElementById('themeToggle'); if(b) b.textContent=t==='dark'?'☀️':'🌙';
+}
+function toggleTheme(){applyTheme(document.body.dataset.theme==='dark'?'light':'dark');}
+
+/* ============================================================
    RENDER — top-level shell
    ============================================================ */
 function render(){
   const app = document.getElementById('app');
   const deck = currentDeck();
   app.innerHTML = `
-    <div class="app-toolbar">
-      <button class="icon-btn" id="themeToggle" aria-label="Toggle light or dark mode">${state.theme==='dark'?'☀️ Light':'🌙 Dark'}</button>
-      <button class="icon-btn" data-act="mode" data-m="about">ℹ️ About</button>
-    </div>
+    <div class="top-actions"><button class="btn secondary theme-btn" id="themeToggle" title="Toggle light/dark mode">${document.body.dataset.theme==='dark'?'☀️':'🌙'}</button></div>
     <div class="letterhead">
       ${sealSVG()}
       <div class="titles">
         <h1>Civics Test Prep</h1>
-        <p>U.S. naturalization interview study companion · ${APP_CONFIG.currentYear}</p>
+        <p>U.S. Citizenship Test Practice · <span class="brand-badge">2026-ready</span></p>
       </div>
     </div>
-    <div class="info-banner"><strong>Current for ${APP_CONFIG.currentYear}:</strong> the official USCIS test is still the <strong>2025 version</strong>. This app also includes the 2008 version for applicants whose filing date makes that version applicable. Content last checked ${APP_CONFIG.lastVerified}.</div>
-    <div class="version-row">
+
+    ${state.mode!=='home' ? `<div class="version-row">
       <div class="seg">
-        <button data-act="version" data-v="2008" class="${state.version==='2008'?'active':''}">2008 test · 100 Q</button>
-        <button data-act="version" data-v="2025" class="${state.version==='2025'?'active':''}">2025 test · 128 Q</button>
+        <button data-act="version" data-v="2008" class="${state.version==='2008'?'active':''}">2008 · 100 Q</button>
+        <button data-act="version" data-v="2025" class="${state.version==='2025'?'active':''}">2025 · 128 Q</button>
       </div>
       <span class="pill">Need ${deck.need} of ${deck.asked} to pass</span>
     </div>
-    <p class="version-note">${deck.note} Not sure which applies to you? It depends on when you filed Form N‑400 — see <a href="${APP_CONFIG.officialStudyUrl}" target="_blank" rel="noopener">official USCIS study materials</a>.</p>
-    <div class="tabs" role="tablist">
+    <p class="version-note">${deck.note} Not sure which applies to you? It depends on when you filed Form N‑400 — see <a href="https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test" target="_blank" rel="noopener">USCIS</a>.</p>`:''}
+
+    <div class="tabs">
       <button data-act="mode" data-m="home" class="${state.mode==='home'?'active':''}">Home</button>
       <button data-act="mode" data-m="flashcards" class="${state.mode==='flashcards'?'active':''}">Flashcards</button>
       <button data-act="mode" data-m="interview" class="${state.mode==='interview'?'active':''}">Mock interview</button>
-      <button data-act="mode" data-m="65-20" class="${state.mode==='65-20'?'active':''}">2025 65/20</button>
+      <button data-act="mode" data-m="65-20" class="${state.mode==='65-20'?'active':''}">2025 65/20 · 2026</button>
       <button data-act="mode" data-m="browse" class="${state.mode==='browse'?'active':''}">All questions</button>
+      <button data-act="mode" data-m="progress" class="${state.mode==='progress'?'active':''}">Progress</button>
       <button data-act="mode" data-m="settings" class="${state.mode==='settings'?'active':''}">My state</button>
+      <button data-act="mode" data-m="about" class="${state.mode==='about'?'active':''}">About</button>
+      <button data-act="mode" data-m="monetize" class="${state.mode==='monetize'?'active':''}">Support</button>
     </div>
-    <div id="modeBody"></div>
-    <footer>${APP_CONFIG.name} v${APP_CONFIG.version} · ${APP_CONFIG.disclaimer} Questions/answers are reproduced for study purposes. Dynamic answers can change; always confirm at <a href="${APP_CONFIG.testUpdatesUrl}" target="_blank" rel="noopener">USCIS Test Updates</a> before your interview. State information and progress are saved locally in this browser.</footer>
-  `;
-  const theme=document.getElementById('themeToggle'); if(theme) theme.onclick=async()=>{state.theme=state.theme==='dark'?'light':'dark';document.body.classList.toggle('dark',state.theme==='dark');await saveJSON('theme',state.theme);render();};
-  bindHeader();
-  renderMode();
-}
 
-function progressStats(){
-  const all=[...state.progress['2008'].history,...state.progress['2025'].history].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
-  const tests=all.length, passed=all.filter(x=>x.correct>=x.total*(x.total===20?.6:.6)).length;
-  const avg=tests?Math.round(all.reduce((sum,x)=>sum+(x.correct/x.total*100),0)/tests):0;
-  return {tests,passed,avg,missed08:state.progress['2008'].missed.length,missed25:state.progress['2025'].missed.length};
-}
-function homeView(){
-  const st=progressStats();
-  const current=DECKS[state.version];
-  const totalQ=current.rows.length;
-  const clearCount=Math.max(0, totalQ-state.progress[state.version].missed.length);
-  return `<div class="hero-card"><h2>Ready to practice?</h2><p>Study smarter with flashcards, realistic oral practice, the dedicated 2025 65/20 test, and printable practice certificates.</p><div class="hero-actions"><button class="btn" id="homeFlash">📚 Start flashcards</button><button class="btn" id="homeInterview">🎤 Mock interview</button><button class="btn" id="home6520">⭐ 65/20 practice</button></div></div><div class="stats-grid"><div class="stat-card"><strong>${st.tests}</strong><span>Practice rounds</span></div><div class="stat-card"><strong>${st.passed}</strong><span>Rounds passed</span></div><div class="stat-card"><strong>${st.avg}%</strong><span>Average score</span></div><div class="stat-card"><strong>${st.missed08+st.missed25}</strong><span>Questions to review</span></div></div><div class="panel progress-summary"><h3 style="margin-top:0">Your ${state.version} study dashboard</h3><p class="muted small">Your data stays in this browser. Nothing is sent to a server.</p><div class="row between small"><span>Questions not currently marked for review</span><strong>${clearCount}</strong></div><div class="mini-bar" style="margin-top:7px"><span style="width:${Math.min(100,Math.round(clearCount/totalQ*100))}%"></span></div><p class="muted small">This is a review-tracking indicator, not an official readiness score. Use <strong>Review missed</strong> in Flashcards to focus on saved weak questions.</p></div><div class="panel" style="margin-top:14px"><h3 style="margin-top:0">Official test information</h3><div class="source-grid"><div class="source-card"><strong>2025 version</strong><span class="small muted">128 questions · up to 20 asked · 12 correct to pass.</span></div><div class="source-card"><strong>65/20 special consideration</strong><span class="small muted">20 starred study questions · 10 asked · 6 correct to pass.</span></div></div><p class="small muted" style="margin-bottom:0">For ${APP_CONFIG.currentYear}, the official test version is still called the <strong>2025 Civics Test</strong>. Always verify current dynamic answers with USCIS.</p></div>`;
-}
-function aboutView(){
-  return `<div class="panel"><h2 style="margin-top:0">About Civics Test Prep</h2><p>This is an independent study tool for people preparing for the U.S. naturalization civics test. It includes the 2008 and 2025 USCIS question sets, flashcards, mock interview practice, a dedicated 2025 65/20 special consideration practice round, progress tracking, state-specific answer fields, and practice certificates.</p><h3>Privacy</h3><p class="muted small">Your progress, state information, theme preference, and practice history are stored with your browser's localStorage. This app does not send those items to a server.</p><h3>Sources & updates</h3><div class="source-grid"><div class="source-card"><strong>USCIS study materials</strong><a href="${APP_CONFIG.officialStudyUrl}" target="_blank" rel="noopener">Open official source</a></div><div class="source-card"><strong>USCIS test updates</strong><a href="${APP_CONFIG.testUpdatesUrl}" target="_blank" rel="noopener">Check dynamic answers</a></div></div><p class="small muted">App version ${APP_CONFIG.version} · Content: ${APP_CONFIG.contentVersion} · Last checked ${APP_CONFIG.lastVerified}. To update the content later, edit the centralized <code>ROWS_08</code>, <code>ROWS_25</code>, <code>CURRENT</code>, and <code>APP_CONFIG</code> sections in this single HTML file, then upload the new <code>index.html</code> to GitHub Pages.</p><p class="small muted"><strong>Important:</strong> A practice certificate is not an official USCIS certificate, citizenship document, or test result.</p><button class="btn" id="aboutBack">Back to Home</button></div>`;
+    <div id="modeBody"></div>
+
+    <footer>
+      Independent study tool. Not affiliated with or endorsed by USCIS. Dynamic answers were last reviewed ${LAST_VERIFIED}; always confirm changeable answers at <a href="https://www.uscis.gov/citizenship/testupdates" target="_blank" rel="noopener">USCIS test updates</a> before your interview.
+      <div class="footer-links"><button class="link-btn" data-act="mode" data-m="about">About & Privacy</button><a href="https://www.uscis.gov/citizenship/find-study-materials-and-resources/study-for-the-test" target="_blank" rel="noopener">Official USCIS study materials</a></div>
+    </footer>
+  `;
+  bindHeader();
+  const theme=document.getElementById('themeToggle'); if(theme) theme.onclick=toggleTheme;
+  renderMode();
 }
 
 function sealSVG(){
@@ -762,7 +916,7 @@ function bindHeader(){
     b.onclick = ()=>{
       state.mode = b.dataset.m;
       if(state.mode==='interview') startInterview();
-       if(state.mode==='65-20') start65Twenty();
+      if(state.mode==='65-20') start65Twenty();
       render();
     };
   });
@@ -775,8 +929,10 @@ function renderMode(){
   else if(state.mode==='interview') body.innerHTML = interviewView();
   else if(state.mode==='65-20') body.innerHTML = sixtyFiveTwentyView();
   else if(state.mode==='browse') body.innerHTML = browseView();
+  else if(state.mode==='progress') body.innerHTML = progressView();
   else if(state.mode==='settings') body.innerHTML = settingsView();
   else if(state.mode==='about') body.innerHTML = aboutView();
+  else if(state.mode==='monetize') body.innerHTML = monetizationView();
   bindModeEvents();
 }
 
@@ -923,7 +1079,7 @@ function interviewView(){
         `: `<p class="muted" style="margin-top:16px;">Nothing missed this round — nice work.</p>`}
         <div class="card-controls">
           <span></span>
-          <div class="share-row"><button class="btn secondary" id="ivShare">📤 Share result</button><button class="btn" id="ivRestart">Start another round</button></div>
+          <button class="btn" id="ivRestart">Start another round</button>
         </div>
       </div>
     `;
@@ -964,7 +1120,6 @@ function interviewView(){
 
 function bindInterviewEvents(){
   const cert=document.getElementById('certBtn'); if(cert) cert.onclick=()=>{ const score=state.iv.answers.filter(a=>a.correct).length; openCertificate(document.getElementById('certName').value, score, state.iv.answers.length, `${state.version} Civics Test Practice`); };
-  const share=document.getElementById('ivShare'); if(share) share.onclick=()=>{const c=state.iv.answers.filter(a=>a.correct).length; sharePracticeResult(`${state.version} Civics Test Practice`,c,state.iv.answers.length);};
   const restart = document.getElementById('ivRestart');
   if(restart) restart.onclick = ()=>{ startInterview(); renderMode(); };
   const reveal = document.getElementById('ivReveal');
@@ -993,8 +1148,8 @@ async function gradeInterview(correct){
   state.iv.revealed = false;
   if(passReached || impossible || exhausted){
     state.iv.finished = true;
-    prog.history.unshift({date:new Date().toISOString().slice(0,10), correct:correctCount, total:answered, test:`${state.version} Mock Interview`});
-    prog.history = prog.history.slice(0,10);
+    prog.history.unshift({date:new Date().toISOString().slice(0,10), correct:correctCount, total:answered, percent:answered?Math.round(correctCount/answered*100):0, passed:correctCount>=deck.need, type:`${state.version} mock interview`});
+    prog.history = prog.history.slice(0,20);
   } else {
     state.iv.idx++;
   }
@@ -1089,34 +1244,23 @@ function bindSettingsEvents(){
   };
 }
 
-function correctCount65(){ return state.sixtyFiveTwenty.answers.filter(a=>a.correct).length; }
-function answeredCount65(){ return state.sixtyFiveTwenty.answers.length; }
-async function sharePracticeResult(testName, score, total){
-  const text=`${testName}: ${score}/${total} (${total?Math.round(score/total*100):0}%). Practice result from ${APP_CONFIG.name}.`;
-  if(navigator.share){ try{ await navigator.share({title:testName,text}); }catch(e){} }
-  else { try{ await navigator.clipboard.writeText(text); toast('Result copied to clipboard.'); }catch(e){ toast(text); } }
-}
-
 function bindModeEvents(){
-  if(state.mode==='home'){
-    const f=document.getElementById('homeFlash'); if(f) f.onclick=()=>{state.mode='flashcards';render();};
-    const i=document.getElementById('homeInterview'); if(i) i.onclick=()=>{state.mode='interview';startInterview();render();};
-    const x=document.getElementById('home6520'); if(x) x.onclick=()=>{state.mode='65-20';start65Twenty();render();};
-  } else if(state.mode==='about'){
-    const b=document.getElementById('aboutBack'); if(b) b.onclick=()=>{state.mode='home';render();};
-  }
   if(state.mode==='flashcards') bindFlashcardEvents();
   else if(state.mode==='interview') bindInterviewEvents();
   if(state.mode==='65-20'){
-    const reveal=document.getElementById('sixtyReveal'); if(reveal) reveal.onclick=()=>{state.sixtyFiveTwenty.revealed=true; renderMode();};
     const good=document.getElementById('sixtyGood'); if(good) good.onclick=()=>grade65Twenty(true);
     const bad=document.getElementById('sixtyBad'); if(bad) bad.onclick=()=>grade65Twenty(false);
     const restart=document.getElementById('sixtyRestart'); if(restart) restart.onclick=()=>{start65Twenty(); renderMode();};
-    const cert=document.getElementById('cert65'); if(cert) cert.onclick=()=>{const c=state.sixtyFiveTwenty.answers.filter(a=>a.correct).length; const a=state.sixtyFiveTwenty.answers.length; openCertificate(document.getElementById('certName65').value,c,a,'USCIS 2025 Civics Test · 65/20 Practice');};
-    const share=document.getElementById('shareResult65'); if(share) share.onclick=()=>sharePracticeResult('USCIS 2025 Civics Test · 65/20 Practice',correctCount65(),answeredCount65());
+    const cert=document.getElementById('cert65'); if(cert) cert.onclick=()=>{
+      const st=state.sixtyFiveTwenty;
+      const score=st.answers.filter(a=>a.correct).length;
+      openCertificate(document.getElementById('certName65').value, score, st.answers.length, '2025 65/20 Practice Test · Current for 2026');
+    };
   }
   else if(state.mode==='browse') bindBrowseEvents();
+  else if(state.mode==='progress') bindProgressEvents();
   else if(state.mode==='settings') bindSettingsEvents();
+  else if(state.mode==='home') bindHomeEvents();
 }
 
 init();
