@@ -235,6 +235,7 @@
 /* MONETIZATION */
 .monetize-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.money-card{border:1px solid var(--line,#ddd);border-radius:12px;padding:18px;background:var(--card,#fff)}.money-card h3{margin:0 0 7px}.money-card p{margin:7px 0;color:var(--muted,#667085)}.money-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.ad-slot{min-height:90px;border:1px dashed #c8ccd4;border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;margin:14px 0;color:#7a7f89;font-size:12px;background:rgba(127,127,127,.04)}.ad-slot:empty{display:none}.disclosure{font-size:12px;color:var(--muted,#667085);margin-top:10px}.support-list{display:grid;gap:8px;margin-top:10px}.support-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line,#ddd);border-radius:9px}.money-badge{display:inline-block;font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;background:#f1ead7;color:#6b531d;margin-bottom:8px}@media(max-width:700px){.monetize-grid{grid-template-columns:1fr}}
 </style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 <div class="wrap" id="app"></div>
@@ -553,7 +554,9 @@ function affiliateButton(url,label){
 function monetizationView(){
   return `<div class="panel"><div class="money-badge">💰 Support the app</div><h2 class="section-title">Keep Civics Test Prep free</h2><p class="muted">The core study tools remain free. If this app helps you, you can support development or explore optional premium resources.</p>
   <div class="monetize-grid">
-    <div class="money-card"><h3>⭐ Premium</h3><p>Offer an optional paid upgrade such as an ad-free experience, extra study packs, or advanced features.</p><div class="money-actions">${monetizationLink(MONETIZATION.premiumUrl,'View Premium')}</div></div>
+    <div class="money-card"><h3>⭐ Premium</h3><p>Offer an optional paid upgrade such as an ad-free experience, extra study packs, or advanced features.</p><div class="money-actions">
+  <button class="btn" onclick="buyPremium()">Unlock Premium — ₹99</button>
+</div></div>
     <div class="money-card"><h3>❤️ Donate</h3><p>Accept voluntary support. Choose a payment page or UPI account that you control.</p><div class="money-actions">${monetizationLink(MONETIZATION.donateUrl,'Donate')} ${upiLink()}</div></div>
     <div class="money-card"><h3>📚 Recommended study resources</h3><p>Use affiliate links for relevant books or study supplies. Only recommend products you genuinely want to feature.</p><div class="money-actions">${affiliateButton(MONETIZATION.affiliateLinks.studyGuide,'Study Guide')} ${affiliateButton(MONETIZATION.affiliateLinks.notebook,'Notebook')} ${affiliateButton(MONETIZATION.affiliateLinks.flashcards,'Flashcards')}</div><div class="disclosure">Affiliate disclosure: if a linked product is purchased through an affiliate link, you may receive a commission at no extra cost to the buyer.</div></div>
     <div class="money-card"><h3>📢 Advertising</h3><p>Google AdSense can place ads after your site is approved. Replace the AdSense client and ad-slot placeholders in the configuration.</p><div class="disclosure">Never click your own ads or encourage users to click ads. Follow the ad network's policies.</div></div>
@@ -561,6 +564,100 @@ function monetizationView(){
   <div class="notice" style="margin-top:14px;"><strong>Important:</strong> GitHub Pages hosts your HTML but does not collect or pay you. Money goes to the bank/payment account connected to your advertising, checkout, donation, or affiliate provider.</div>
   </div>`;
 }
+async function buyPremium(){
+  if(!MONETIZATION.razorpayKeyId){
+    toast('Razorpay Key ID is missing.');
+    return;
+  }
+
+  const email=prompt('Enter your email for the Premium purchase:');
+  if(!email || !email.includes('@')){
+    toast('Please enter a valid email.');
+    return;
+  }
+
+  try{
+    toast('Creating payment...');
+
+    const r=await fetch(
+      MONETIZATION.paymentApiUrl+'/create-order',
+      {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email})
+      }
+    );
+
+    const order=await r.json();
+
+    if(!r.ok || !order.order_id){
+      throw new Error(order.error || 'Unable to create order');
+    }
+
+    const options={
+      key:MONETIZATION.razorpayKeyId,
+      amount:order.amount,
+      currency:order.currency,
+      name:'US Citizenship Prep',
+      description:'Premium — 1 Year',
+      order_id:order.order_id,
+      prefill:{email:email},
+
+      handler:async function(response){
+        try{
+          toast('Verifying payment...');
+
+          const vr=await fetch(
+            MONETIZATION.paymentApiUrl+'/verify-payment',
+            {
+              method:'POST',
+              headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({
+                ...response,
+                email:email
+              })
+            }
+          );
+
+          const result=await vr.json();
+
+          if(!vr.ok || !result.ok){
+            throw new Error(result.error || 'Payment verification failed');
+          }
+
+          localStorage.setItem(
+            'ctcp:premiumToken',
+            result.token
+          );
+
+          toast('🎉 Premium activated for 1 year!');
+
+          render();
+
+        }catch(e){
+          toast(e.message || 'Payment verification failed.');
+        }
+      },
+
+      modal:{
+        ondismiss:function(){
+          toast('Payment cancelled.');
+        }
+      }
+    };
+
+    const rzp=new Razorpay(options);
+
+    rzp.on('payment.failed',function(){
+      toast('Payment failed. Please try again.');
+    });
+
+    rzp.open();
+
+  }catch(e){
+    toast(e.message || 'Payment could not be started.');
+  }
+      }
 function initMonetization(){
   if(!MONETIZATION.adsenseClient) return;
   if(document.querySelector('script[data-adsense]')) return;
