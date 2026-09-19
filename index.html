@@ -512,18 +512,28 @@ function buildDeck(rows, cats){
    to verify paid access in the browser.
    ============================================================ */
 const MONETIZATION = {
-  adsenseClient: '', // e.g. ca-pub-XXXXXXXXXXXXXXXX
-  adSlots: { home: '', afterTest: '' },
-  premiumUrl: '', // your Razorpay/Stripe checkout URL
-  donateUrl: '', // your payment/donation page URL
-  upiId: '', // e.g. yourname@upi — optional
+  adsenseClient: '',
+  adSlots: {
+    home: '',
+    afterTest: ''
+  },
+
+  razorpayKeyId: 'rzp_live_Td2Zx3yghF6Y31',
+  paymentApiUrl: 'https://us-citizenship-prep-api.tusharsuri1247.workers.dev',
+
+  premiumPricePaise: 9900,
+  premiumDays: 365,
+
+  donateUrl: '',
+  upiId: '',
+
   affiliateLinks: {
     studyGuide: '',
     notebook: '',
     flashcards: ''
   }
 };
-
+  
 function monetizationLink(url,label){
   return url ? `<a class="btn secondary" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label}</a>` : `<button class="btn secondary" type="button" onclick="toast('Add your payment link in MONETIZATION near the top of index.html.')">${label}</button>`;
 }
